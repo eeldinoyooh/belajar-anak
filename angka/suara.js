@@ -19,7 +19,13 @@ function createsoundbite(e) {
         t.playclip = function() {
             t.pause()
             t.currentTime = 0
-            t.play()
+            t.play().catch(function(error) {
+                if (error.name === 'AbortError') {
+                    console.log('Audio play was interrupted');
+                } else {
+                    console.error('Error playing audio:', error);
+                }
+            });
         }
         return t
     } else {
