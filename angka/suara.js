@@ -17,13 +17,38 @@ function createsoundbite(e) {
         }
         t.load()
         t.playclip = function() {
-            t.pause()
-            t.currentTime = 0
-            t.play().catch(function(error) {
-                if (error.name === 'AbortError') {
-                    console.log('Audio play was interrupted');
+            return new Promise((resolve, reject) => {
+                if (t.readyState >= 2) { // HAVE_CURRENT_DATA
+                    t.pause()
+                    t.currentTime = 0
+                    t.play()
+                        .then(resolve)
+                        .catch(error => {
+                            if (error.name === 'AbortError') {
+                                console.log('Audio play was interrupted');
+                                resolve();
+                            } else {
+                                console.error('Error playing audio:', error);
+                                reject(error);
+                            }
+                        });
                 } else {
-                    console.error('Error playing audio:', error);
+                    t.addEventListener('canplaythrough', function onCanPlay() {
+                        t.removeEventListener('canplaythrough', onCanPlay);
+                        t.pause()
+                        t.currentTime = 0
+                        t.play()
+                            .then(resolve)
+                            .catch(error => {
+                                if (error.name === 'AbortError') {
+                                    console.log('Audio play was interrupted');
+                                    resolve();
+                                } else {
+                                    console.error('Error playing audio:', error);
+                                    reject(error);
+                                }
+                            });
+                    });
                 }
             });
         }
@@ -37,24 +62,24 @@ function createsoundbite(e) {
     }
 }
 
-var mouseoversound = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/A.MP3")
-var a = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka1.MP3")
-var b = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka2.MP3")
-var c = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka3.MP3")
-var d = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka4.MP3")
-var e = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka5.MP3")
-var f = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka6.MP3")
-var g = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka7.MP3")
-var h = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka8.MP3")
-var i = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka9.MP3")
-var j = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka10.MP3")
-var k = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka11.MP3")
-var l = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka12.MP3")
-var m = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka13.MP3")
-var n = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka14.MP3")
-var o = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka15.MP3")
-var p = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka16.MP3")
-var q = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka17.MP3")
-var r = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka18.MP3")
-var s = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka19.MP3")
-var t = createsoundbite("https://eeldinoyooh.github.io/belajar-anak/angka/suara/angka20.MP3")
+var mouseoversound = createsoundbite("suara/A.mp3")
+var a = createsoundbite("suara/angka1.mp3")
+var b = createsoundbite("suara/angka2.mp3")
+var c = createsoundbite("suara/angka3.mp3")
+var d = createsoundbite("suara/angka4.mp3")
+var e = createsoundbite("suara/angka5.mp3")
+var f = createsoundbite("suara/angka6.mp3")
+var g = createsoundbite("suara/angka7.mp3")
+var h = createsoundbite("suara/angka8.mp3")
+var i = createsoundbite("suara/angka9.mp3")
+var j = createsoundbite("suara/angka10.mp3")
+var k = createsoundbite("suara/angka11.mp3")
+var l = createsoundbite("suara/angka12.mp3")
+var m = createsoundbite("suara/angka13.mp3")
+var n = createsoundbite("suara/angka14.mp3")
+var o = createsoundbite("suara/angka15.mp3")
+var p = createsoundbite("suara/angka16.mp3")
+var q = createsoundbite("suara/angka17.mp3")
+var r = createsoundbite("suara/angka18.mp3")
+var s = createsoundbite("suara/angka19.mp3")
+var t = createsoundbite("suara/angka20.mp3")
