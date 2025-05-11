@@ -2,7 +2,7 @@
 <html>
 	<head>
 	<meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
-		<audio id="musik" src="back.mp3"></audio>
+		<audio id="musik" src="back.mp3" autoplay loop></audio>
 		<button onclick="document.getElementById('musik').play()">Play Musik</button>
 		<title>BBM</title>
 		<script type="text/javascript" src="jquery-1.11.3.js"></script>
@@ -13,6 +13,13 @@
 					$(this).parents('div.popupC').fadeOut('slow');
 				});
 			});
+		</script>
+		<script>
+		document.body.addEventListener('click', function playAudio() {
+			var audio = document.getElementById('musik');
+			audio.play();
+			document.body.removeEventListener('click', playAudio);
+		});
 		</script>
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<style>
