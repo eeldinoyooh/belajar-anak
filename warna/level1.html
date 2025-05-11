@@ -1,0 +1,217 @@
+<!DOTYPE HTML>
+<html>
+	<head>
+		<title>MARI BELAJAR</title>
+		<script src='suara.js' type='text/javascript'> </script>
+		<link rel="stylesheet" type="text/css" href="../style.css" />
+		<style>
+			/* #table > table { /* Menargetkan tabel utama untuk layout */
+				/* width: 100%;
+				table-layout: fixed; /* Memastikan lebar kolom konsisten */
+			/* } */ 
+			/* #table > table > tbody > tr > td { /* Menargetkan sel kolom di tabel utama */
+				/* width: 50%;
+				box-sizing: border-box; Memastikan padding termasuk dalam width 50% */
+				/* Gaya inline vertical-align dan padding akan tetap berlaku */
+			/* } */
+			.soal {
+				background-color: white;
+				padding: 20px;
+				border-radius: 15px;
+				margin: 10px;
+				font-size: 24px;
+				border: 4px solid brown;
+			}
+			.jawaban {
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			.jawaban:hover {
+				transform: scale(1.1);
+			}
+			.tablesa {
+				width: 50%; /* Atur lebar tabel menjadi 50% */
+				margin: auto; /* Pusatkan tabel */
+			}
+			.tablesa tr td {
+				padding: 5px; /* Perkecil padding sel */
+				font-size: 18px; /* Perkecil ukuran font dalam sel jika perlu */
+			}
+			.tablesa .soal {
+				padding: 10px; /* Sesuaikan padding untuk kelas soal di dalam tablesa */
+				font-size: 20px; /* Sesuaikan font untuk kelas soal di dalam tablesa */
+			}
+			.tablesa .awan.jawaban {
+				width: 70px; /* Atur lebar awan agar lebih kecil */
+				height: 45px; /* Atur tinggi awan agar lebih kecil */
+				padding: 2px; /* Padding kecil agar teks tidak terlalu mepet */
+				background-size: contain; /* Pastikan gambar latar awan menyesuaikan ukuran */
+				background-repeat: no-repeat; /* Hindari pengulangan gambar latar */
+				background-position: center; /* Posisikan gambar latar di tengah */
+				text-align: center; /* Ratakan teks secara horizontal */
+				vertical-align: middle; /* Ratakan konten secara vertikal untuk td */
+				/* Menggunakan flexbox untuk memusatkan konten <a> lebih baik */
+				display: flex;
+				align-items: center; /* Pusatkan item flex secara vertikal */
+				justify-content: center; /* Pusatkan item flex secara horizontal */
+			}
+			.tablesa .awan.jawaban a {
+				font-size: 14px; /* Perkecil font di dalam link jawaban */
+				line-height: 1; /* Sesuaikan line-height agar teks pas di dalam awan kecil */
+			}
+			#navigasiaja {
+				position: relative;
+				display: inline-block; /* Agar width tidak 100% dan bisa di-tengahkan */
+				margin: 0 auto;
+				width: 320px; /* Kembalikan lebar tombol */
+				background-color: brown;
+				border-radius: 5px;
+			}
+			#navigasiaja ul{
+				list-style-type: none;
+				padding: 0; /* Hapus padding default */
+				margin: 0; /* Hapus margin default */
+				text-align: center; /* Rata tengah konten dalam ul */
+			}
+			#navigasiaja ul li{
+				padding: 5px;
+				border-radius: 10px;
+				border: 4px solid brown;
+				margin: 5px auto; /* Gunakan auto untuk kiri kanan agar terpusat */
+				width: 300px;
+				background-color: white;
+				text-align: center;
+				/* Hapus margin-left negatif */
+			}
+			#navigasiaja ul li a{
+				font-size: 20px;
+				font-weight: bold;
+				text-decoration: none;
+				color: purple; /* Warna teks untuk tautan */
+				display: block; /* Membuat tautan mengisi seluruh area li */
+			}
+			/* Posisikan menu di bagian bawah tengah */
+			#menua {
+				margin-top: 30px;
+				margin-bottom: 20px;
+				text-align: center;
+				width: 100%;
+				clear: both;
+			}
+			#countainer {
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				align-items: center; /* Pusatkan elemen secara horizontal */
+				padding: 20px; /* Tambahkan padding untuk ruang di sekitar konten */
+			}
+			#table {
+				flex: 1;
+				width: 90%; /* Batasi lebar div#table */
+				max-width: 1200px; /* Tambahkan batas maksimum lebar */
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 100px; /* Tambahkan margin otomatis */
+				background-color: rgba(255, 255, 255, 0.5);
+				border-radius: 50px;
+				border: 2px solid #a3bffa;
+			}
+			.warna12{
+				text-align:center;
+				font-size:20px;
+				font-weight:bold;
+				padding-left:10px;
+				color: black;
+			text-shadow: 
+				-1px -1px 0 white,  
+				1px -1px 0 white,
+				-1px  1px 0 white,
+				1px  1px 0 white;
+				}
+
+
+		</style>
+	</head>
+	<body>
+		<div id="countainer" style="background-image:url(../background13.jpg);">
+		<div id="table">
+		<table >
+		<tr>
+			<td onclick="merah.playclip()"><a href="#"><div class="warna" style="background-color:red"></div></a></td>
+			<td style="width:10px"></td>
+			<td onclick="biru.playclip()"><a href="#"><div  class="warna" style="background-color:blue"></div></a></td>
+			<td style="width:10px"></td>
+			<td onclick="hijau.playclip()"><a href="#"><div class="warna" style="background-color:green"></div></a></td>
+			<td style="width:10px"></td>
+			<td onclick="oranye.playclip()"><a href="#"><div class="warna" style="background-color:orange"></div></a></td>
+			
+		</tr>
+		<tr>
+			<td class="warna12">MERAH</td>
+			<td style="width:10px"></td>
+			<td class="warna12">BIRU</td>
+			<td style="width:10px"></td>
+			<td class="warna12">HIJAU</td>
+			<td style="width:10px"></td>
+			<td class="warna12">ORANYE</td>
+			
+		</tr>
+		<tr>
+			<td style="height:10px"></td>
+		</tr>
+		<tr>
+			<td onclick="hitam.playclip()"><a href="#"><div class="warna" style="background-color:black"></div></a></td>
+			<td></td>
+			<td onclick="coklat.playclip()"><a href="#"><div class="warna" style="background-color:brown"></div></a></td>
+			<td></td>
+			<td onclick="kuning.playclip()"><a href="#"><div class="warna" style="background-color:yellow"></div></a></td>
+			<td></td>
+			<td onclick="merahmuda.playclip()"><a href="#"><div class="warna" style="background-color:pink"></div></a></td>
+		</tr>
+		<tr>
+			<td class="warna12">HITAM</td>
+			<td></td>
+			<td class="warna12">COKLAT</td>
+			<td></td>
+			<td class="warna12">KUNING</td>
+			<td></td>
+			<td class="warna12">MERAH MUDA</td>
+			
+		</tr>
+		<tr>
+			<td style="height:10px"></td>
+		</tr>
+		<tr>
+			<td onclick="putih.playclip()"><a href="#"><div  class="warna" style="background-color:white"></div></a></td>
+			<td></td>
+			<td onclick="ungu.playclip()"><a href="#"><div class="warna" style="background-color:purple"></div></a></td>
+			<td></td>
+			<td onclick="abu.playclip()"><a href="#"><div class="warna" style="background-color:gray"></div></a></td>
+			<td></td>
+			<td onclick="aqua.playclip()"><a href="#"><div class="warna" style="background-color:aqua"></div></a></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td class="warna12">PUTIH</td>
+			<td></td>
+			<td class="warna12">UNGU</td>
+			<td></td>
+			<td class="warna12">ABU-ABU</td>
+			<td></td>
+			<td class="warna12">AQUA</td>
+			<td></td>
+		</tr>
+	</table>
+</div>
+<div style="margin-top: auto;"></div> <!-- Spacer yang akan mendorong menu ke bawah -->
+<div id="menua">
+	<div id="navigasiaja">
+		<ul>
+			<li><a href="index.html"><< KEMBALI</a></li>
+		</ul>
+	</div>
+</div>
+</div>
+	</body>
+</html>

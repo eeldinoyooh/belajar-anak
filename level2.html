@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Level 2 - Penjumlahan 1-10</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-1.11.3.js"></script>
+    <style>
+        #content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        #soal {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .nav-bottom {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: auto;
+            text-align: center;
+        }
+        #navigasi {
+            margin: 0 auto;
+            width: auto;
+        }
+        #navigasi ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #navigasi ul li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="countainer" style="background-image: url('background12.jpg');">
+        <div id="content">
+            <div id="soal">
+                <h2 style="color: white; text-align: center; margin-bottom: 20px;">Penjumlahan 1-10</h2>
+                <div class="soal-container" style="background: rgba(255,255,255,0.9); padding: 20px; border-radius: 10px;">
+                    <div id="pertanyaan" style="font-size: 24px; text-align: center; margin-bottom: 20px;"></div>
+                    <input type="number" id="jawaban" style="font-size: 20px; padding: 5px; width: 100px; margin: 0 auto; display: block;">
+                    <button onclick="cekJawaban()" style="display: block; margin: 20px auto; padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">Cek Jawaban</button>
+                </div>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <div id="navigasi">
+                <ul>
+                    <li><a href="index.html" style="color: black;">Menu Utama</a></li>
+                    <li><a href="level1.html" style="color: black;">Level 1</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let angka1, angka2, hasil;
+        
+        function generateSoal() {
+            angka1 = Math.floor(Math.random() * 10) + 1;
+            angka2 = Math.floor(Math.random() * 10) + 1;
+            hasil = angka1 + angka2;
+            document.getElementById('pertanyaan').innerHTML = angka1 + ' + ' + angka2 + ' = ?';
+            document.getElementById('jawaban').value = '';
+            
+            // Baca soal
+            const utterance = new SpeechSynthesisUtterance(angka1 + ' ditambah ' + angka2);
+            utterance.lang = 'id-ID';
+            speechSynthesis.speak(utterance);
+        }
+
+        function cekJawaban() {
+            const jawaban = parseInt(document.getElementById('jawaban').value);
+            if (jawaban === hasil) {
+                const utterance = new SpeechSynthesisUtterance('Benar! Jawaban ' + hasil + ' adalah tepat');
+                utterance.lang = 'id-ID';
+                speechSynthesis.speak(utterance);
+                setTimeout(generateSoal, 2000);
+            } else {
+                const utterance = new SpeechSynthesisUtterance('Maaf, jawaban salah. Coba lagi!');
+                utterance.lang = 'id-ID';
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Generate soal pertama kali halaman dimuat
+        window.onload = generateSoal;
+    </script>
+</body>
+</html> 
